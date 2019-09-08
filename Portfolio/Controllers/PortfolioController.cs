@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 namespace Portfolio
 {
@@ -9,6 +10,9 @@ namespace Portfolio
     public ViewResult Index()
     {
       ViewBag.Title = "About Me";
+      ViewBag.active = "active";
+      DateTime time = DateTime.Now;
+      ViewBag.time = time;
       return View();
     }
 
@@ -17,6 +21,9 @@ namespace Portfolio
     public ViewResult Projects()
     {
       ViewBag.Title = "Completed Projects";
+      ViewBag.active = "active";
+      DateTime time = DateTime.Now;
+      ViewBag.time = time;
       return View("Projects");
     }
 
@@ -25,6 +32,9 @@ namespace Portfolio
     public ViewResult Contact()
     {
       ViewBag.Title = "Contact Me";
+      ViewBag.active = "active";
+      DateTime time = DateTime.Now;
+      ViewBag.time = time;
       return View("Contact");
     }
 
