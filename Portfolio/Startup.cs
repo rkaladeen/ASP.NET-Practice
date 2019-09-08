@@ -26,6 +26,7 @@ namespace Portfolio
           app.UseDeveloperExceptionPage();
       }
       app.UseMvc();
+      app.UseStaticFiles();
     }
   }
 }
