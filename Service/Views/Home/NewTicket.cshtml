@@ -1,0 +1,42 @@
+@{
+  ViewData["Title"] = "New Ticket";
+}
+
+<h1 class="display-4 text-center">How can we help?</h1>
+<div class="jumbotron col-md-6 mx-auto" style="border-radius: 0;">
+  <form asp-action="createTicket" method="POST">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" type="text" name="name"/>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <select class="form-control" type="text" name="location">
+        @{
+          foreach(string store in ViewData["Store"] as List<string>)
+          {
+            <option>@store</option>
+          }
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Priority</label>
+      <select class="form-control" type="text" name="priority">
+        @{
+          foreach(string priority in ViewData["Priority"] as List<string>)
+          {
+            <option>@priority</option>
+          }
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" rows="3" name="description"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
