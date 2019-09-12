@@ -2976,6 +2976,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Shared\\NewsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\NewsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -3001,8 +3006,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Home\\Welcome.cshtml",
-      "TargetPath": "Views\\Home\\Welcome.cshtml",
+      "FilePath": "Views\\Shared\\TicketPartial.cshtml",
+      "TargetPath": "Views\\Shared\\TicketPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\LogIn.cshtml",
+      "TargetPath": "Views\\User\\LogIn.cshtml",
       "FileKind": "mvc"
     },
     {

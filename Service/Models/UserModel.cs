@@ -6,12 +6,12 @@ namespace Service.Models
   public class UserModel 
   {
     [Required]
-    [MinLength(3)]
+    [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
     [Display(Name = "First Name")]
     public string FirstName {get; set;}
 
     [Required]
-    [MinLength(3)]
+    [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
     [Display(Name = "Last Name")]
     public string LastName {get; set;}
 

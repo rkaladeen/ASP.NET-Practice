@@ -14,11 +14,15 @@ namespace Service.Controllers
     {
       return View();
     }
+    public IActionResult LogIn()
+    {
+      return View();
+    }
     public IActionResult CreateUser(UserModel User)
     {
       if(ModelState.IsValid)
       {
-        return RedirectToAction("Welcome", "Home");
+        return RedirectToAction("Index", "Home");
       }
       else
       {
@@ -31,5 +35,7 @@ namespace Service.Controllers
     {
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    
   }
 }

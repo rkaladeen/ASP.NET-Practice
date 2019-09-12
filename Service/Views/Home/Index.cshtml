@@ -1,7 +1,77 @@
 ﻿@{
-  ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-  <h1 class="display-4">Open Tickets</h1>
+<style>
+
+.scrollbar
+{
+	margin-left: 30px;
+	height: 500px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+#wrapper
+{
+	text-align: center;
+	width: 500px;
+	margin: auto;
+}
+
+#style-5::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-5::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-5::-webkit-scrollbar-thumb
+{
+	background-color: #0ae;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+</style>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>News & Announcements</h4>
+    <div class="jumbotron p-2 shadow scrollbar w-100" id="style-5">
+      <div class="overflow-auto">
+        <partial name="NewsPartial"/>
+        <partial name="NewsPartial"/>
+        <partial name="NewsPartial"/>
+        <partial name="NewsPartial"/>
+        <partial name="NewsPartial"/>
+        <partial name="NewsPartial"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Open Tickets</h4>
+      <div class="jumbotron p-2 shadow scrollbar w-100" id="style-5">
+        <div class="overflow-auto">
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+          <partial name="TicketPartial"/>
+        </div>
+      </div>
+  </div>
+
 </div>
