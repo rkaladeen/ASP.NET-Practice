@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,17 +8,22 @@ using Service.Models;
 
 namespace Service.Controllers
 {
-  public class HomeController : Controller
+  public class UserController : Controller
   {
-    public ViewResult Index()
+    public IActionResult NewUser()
     {
       return View();
     }
-
-    
-    public ViewResult Welcome()
+    public IActionResult CreateUser(UserModel User)
     {
-      return View();
+      if(ModelState.IsValid)
+      {
+        return RedirectToAction("Welcome", "Home");
+      }
+      else
+      {
+        return View("NewUser");
+      }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,17 +8,24 @@ using Service.Models;
 
 namespace Service.Controllers
 {
-  public class HomeController : Controller
+  public class TicketController : Controller
   {
-    public ViewResult Index()
+    public IActionResult NewTicket()
     {
       return View();
     }
 
-    
-    public ViewResult Welcome()
+    public IActionResult CreateTicket(TicketModel Ticket)
     {
-      return View();
+      if(ModelState.IsValid)
+      {
+        Console.WriteLine(Ticket.View());
+        return RedirectToAction("Index", "Home");
+      }
+      else
+      {
+        return View("NewTicket");
+      }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

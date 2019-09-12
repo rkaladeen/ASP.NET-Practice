@@ -2966,13 +2966,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Home\\NewTicket.cshtml",
-      "TargetPath": "Views\\Home\\NewTicket.cshtml",
+      "FilePath": "Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "Views\\Ticket\\NewTicket.cshtml",
+      "TargetPath": "Views\\Ticket\\NewTicket.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2993,6 +2993,16 @@
     {
       "FilePath": "Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\NewUser.cshtml",
+      "TargetPath": "Views\\User\\NewUser.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\Welcome.cshtml",
+      "TargetPath": "Views\\Home\\Welcome.cshtml",
       "FileKind": "mvc"
     },
     {

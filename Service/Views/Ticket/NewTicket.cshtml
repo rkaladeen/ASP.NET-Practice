@@ -1,0 +1,58 @@
+@{
+  ViewData["Title"] = "New Ticket";
+}
+
+<h1 class="display-4 text-center">How can we help?</h1>
+<div class="jumbotron col-md-6 mx-auto" style="border-radius: 0;">
+
+  @model TicketModel
+  <form asp-action="createTicket" asp-controller="Ticket" method="POST">
+
+    <div class="form-group">
+      <label asp-for="Name"></label>
+      <input class="form-control" type="text" asp-for="Name"/>
+      <span class="invalid-feedback d-block" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Location">Location</label>
+      <select class="form-control" type="text" asp-for="Location">
+      <span class="invalid-feedback d-block" asp-validation-for="Location"></span>
+        @{
+          List<string> Store = new List<string>();
+          Store.Add("400");
+          Store.Add("882");
+          Store.Add("2797");
+          foreach(string store in Store as List<string>)
+          {
+            <option>@store</option>
+          }
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Priority">Priority</label>
+      <select class="form-control" type="text" asp-for="Priority">
+        @{
+          List<string> Priority = new List<string>();
+          Priority.Add("Low");
+          Priority.Add("Med");
+          Priority.Add("High");
+          foreach(string priority in Priority as List<string>)
+          {
+            <option>@priority</option>
+          }
+        }
+      </select>
+      <span class="invalid-feedback d-block" asp-validation-for="Priority"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Description">Description</label>
+      <textarea class="form-control" rows="3" asp-for="Description"></textarea>
+      <span class="invalid-feedback d-block" asp-validation-for="Description"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>

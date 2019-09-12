@@ -1,0 +1,43 @@
+@{
+  ViewData["Title"] = "New User";
+}
+
+<h1 class="display-4 text-center">Register below</h1>
+<div class="jumbotron col-md-6 mx-auto" style="border-radius: 0;">
+
+  @model UserModel
+  <form asp-controller="User" asp-action="CreateUser" method="POST">
+
+    <div class="form-group">
+      <label asp-for="FirstName"></label>
+      <input class="form-control" type="text" asp-for="FirstName"/>
+      <span class="invalid-feedback d-block" asp-validation-for="FirstName"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="LastName"></label>
+      <input class="form-control" type="text" asp-for="LastName"/>
+      <span class="invalid-feedback d-block" asp-validation-for="LastName"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Email"></label>
+      <input class="form-control" type="text" asp-for="Email"/>
+      <span class="invalid-feedback d-block" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Password"></label>
+      <input class="form-control" type="password" asp-for="Password"/>
+      <span class="invalid-feedback d-block" asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input class="form-control" type="password" name="confirm"/>
+      <!-- <span class="invalid-feedback d-block" asp-validation-for="Password"></span> -->
+    </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
