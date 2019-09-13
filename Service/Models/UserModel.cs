@@ -5,6 +5,8 @@ namespace Service.Models
 {
   public class UserModel 
   {
+    [Key]
+
     [Required]
     [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
     [Display(Name = "First Name")]
@@ -23,13 +25,8 @@ namespace Service.Models
     [DataType(DataType.Password)]
     public string Password {get; set;}
 
-
-    public string View()
-    {
-      string text;
-      text = $"{FirstName} {LastName}\n{Email}";
-      return text;
-    }
+    public DateTime CreatedAt {get;set;} = DateTime.Now;
+    public DateTime UpdatedAt {get;set;} = DateTime.Now;
   }
 
 }

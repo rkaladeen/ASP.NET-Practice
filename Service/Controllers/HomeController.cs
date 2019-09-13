@@ -5,13 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Service.Controllers
 {
   public class HomeController : Controller
   {
+    private MyContext dbContext;
+    public HomeController(MyContext context)
+    {
+      dbContext = context;
+    } 
     public ViewResult Index()
     {
+      List<TicketModel> AllTickets = dbContext.Tickets.ToList();
+      HttpContext.Session.SetString("UserName", "Raj");
+      ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
       return View();
     }
 

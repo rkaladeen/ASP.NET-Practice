@@ -124,7 +124,7 @@
 .submit-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
   padding: 10px;
   margin: 35px -25px -25px -25px;
@@ -144,6 +144,17 @@
   opacity: 1;
   animation: input_opacity 0.8s cubic-bezier(.55, 0, .1, 1);
   transition: background 0.2s ease-in-out;
+}
+
+.signup-button {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #343a40;
 }
 
 .login-button.raised {
@@ -176,6 +187,7 @@
       <input type="text" class="login-input" placeholder="Email" required autofocus/>
       <input type="password" class="login-input" placeholder="Password" required/>
       <div class="submit-container">
+        <small class="signup-button text-muted">Don't have an account? <a class="text-primary" asp-action="NewUser">Sign Up Here</a></small>
         <button type="submit" class="login-button">SIGN IN</button>
       </div>
     </form>

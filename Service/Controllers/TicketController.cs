@@ -5,13 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace Service.Controllers
 {
   public class TicketController : Controller
   {
+    private MyContext dbContext;
+    public TicketController(MyContext context)
+    {
+      dbContext = context;
+    } 
     public IActionResult NewTicket()
     {
+      ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
       return View();
     }
 
@@ -19,7 +29,8 @@ namespace Service.Controllers
     {
       if(ModelState.IsValid)
       {
-        Console.WriteLine(Ticket.View());
+        dbContext.Tickets.Add(Ticket);
+        dbContext.SaveChanges();
         return RedirectToAction("Index", "Home");
       }
       else

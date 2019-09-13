@@ -5,6 +5,8 @@ namespace Service.Models
 {
   public class TicketModel 
   {
+    [Key]
+
     [Required]
     [MinLength(3)]
     public string Name {get; set;}
@@ -22,12 +24,8 @@ namespace Service.Models
     [MaxLength(250)]
     public string Description {get; set;}
 
-    public string View()
-    {
-      string text;
-      text = $"{Name} | {Location} | {Priority} \n {Description}";
-      return text;
-    }
+    public DateTime CreatedAt {get;set;}
+    public DateTime UpdatedAt {get;set;}
   }
 
 }

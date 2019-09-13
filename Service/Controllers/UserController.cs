@@ -5,11 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service.Controllers
 {
   public class UserController : Controller
   {
+    private MyContext dbContext;
+    public UserController(MyContext context)
+    {
+      dbContext = context;
+    }
     public IActionResult NewUser()
     {
       return View();
@@ -22,6 +29,8 @@ namespace Service.Controllers
     {
       if(ModelState.IsValid)
       {
+        dbContext.Users.Add(User);
+        dbContext.SaveChanges();
         return RedirectToAction("Index", "Home");
       }
       else

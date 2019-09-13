@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Service.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
@@ -29,7 +31,8 @@ namespace Service
         options.CheckConsentNeeded = context => true;
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
-
+      services.AddDbContext<MyContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+      services.AddSession(); 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
     }
 
@@ -44,7 +47,7 @@ namespace Service
       {
         app.UseExceptionHandler("/Home/Error");
       }
-
+      app.UseSession();
       app.UseStaticFiles();
       app.UseCookiePolicy();
 
