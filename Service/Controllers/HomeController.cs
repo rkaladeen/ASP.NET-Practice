@@ -21,7 +21,6 @@ namespace Service.Controllers
     public ViewResult Index()
     {
       List<TicketModel> AllTickets = dbContext.Tickets.ToList();
-      HttpContext.Session.SetString("UserName", "Raj");
       ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
       return View();
     }

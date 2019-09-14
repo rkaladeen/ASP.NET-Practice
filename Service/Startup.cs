@@ -56,7 +56,7 @@ namespace Service
         routes.MapRoute(
           "Default", // Route name
           "{controller}/{action}/{id?}", // URL with parameters
-          new { controller = "Home", action = "Index" }); // Parameter defaults
+          new { controller = "User", action = "LogIn" }); // Parameter defaults
       });
     }
   }

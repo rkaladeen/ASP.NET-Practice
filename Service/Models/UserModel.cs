@@ -37,4 +37,6 @@ namespace Service.Models
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
   }
 
+  
+
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Service.Controllers
 {
@@ -34,6 +35,8 @@ namespace Service.Controllers
           ModelState.AddModelError("Email", "Email already in use!");
           return View("NewUser");
         }
+        PasswordHasher<UserModel> Hasher = new PasswordHasher<UserModel>();
+        User.Password = Hasher.HashPassword(User, User.Password);
         dbContext.Users.Add(User);
         dbContext.SaveChanges();
         return RedirectToAction("Index", "Home");
@@ -41,6 +44,46 @@ namespace Service.Controllers
       else
       {
         return View("NewUser");
+      }
+    }
+
+    public IActionResult LoginUser(LoginUser userSubmission)
+    {
+      if(ModelState.IsValid)
+      {
+        // If inital ModelState is valid, query for a user with provided email
+        var userInDb = dbContext.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+        // If no user exists with provided email
+        if(userInDb == null)
+        {
+          // Add an error to ModelState and return to View!
+          ModelState.AddModelError("Email", "Invalid Email/Password");
+          return View("LogIn");
+        }
+        
+        // Initialize hasher object
+        var hasher = new PasswordHasher<LoginUser>();
+        
+        // verify provided password against hash stored in db
+        var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
+        
+        // result can be compared to 0 for failure
+        if(result == 0)
+        {
+          // handle failure (this should be similar to how "existing email" is handled)
+          ModelState.AddModelError("Email", "Invalid Email/Password");
+          return View("LogIn");
+        }
+        else
+        {
+          HttpContext.Session.SetString("UserName", userInDb.FirstName);
+          ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
+          return RedirectToAction("Index", "Home");
+        }
+      }
+      else 
+      {
+        return View("LogIn");
       }
     }
 
