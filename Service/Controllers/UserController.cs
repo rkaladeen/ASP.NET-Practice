@@ -29,6 +29,11 @@ namespace Service.Controllers
     {
       if(ModelState.IsValid)
       {
+        if(dbContext.Users.Any(u => u.Email == User.Email))
+        {
+          ModelState.AddModelError("Email", "Email already in use!");
+          return View("NewUser");
+        }
         dbContext.Users.Add(User);
         dbContext.SaveChanges();
         return RedirectToAction("Index", "Home");

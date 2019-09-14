@@ -199,9 +199,9 @@
       </div>
 
       <div class="form-group col-6">
-        <label>Confirm Password</label>
-        <input class="login-input" type="password" name="confirm"/>
-        <!-- <span class="invalid-feedback d-block" asp-validation-for="Password"></span> -->
+        <label asp-for="Confirm"></label>
+        <input class="login-input" type="password" asp-for="Confirm"/>
+        <span class="invalid-feedback d-block" asp-validation-for="Confirm"></span>
       </div>
     </div>
     <div class="submit-container">

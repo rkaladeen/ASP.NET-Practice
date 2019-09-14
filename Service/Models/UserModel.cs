@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Service.Models 
 {
@@ -22,8 +23,15 @@ namespace Service.Models
     public string Email {get; set;}
 
     [Required]
+    [MinLength(8, ErrorMessage="Password must be 8 characters or longer!")]
     [DataType(DataType.Password)]
     public string Password {get; set;}
+
+    [NotMapped]
+    [Compare("Password", ErrorMessage="Password does not match.")]
+    [DataType(DataType.Password)]
+    [Display(Name = "Confirm Password")]
+    public string Confirm {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
