@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Service.Models 
 {
-  public class UserModel 
+  public class UserModel : BaseEntityModel
   {
     [Key]
+    public int User_Id {get; set;}
 
     [Required]
     [StringLength(10, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -32,11 +33,5 @@ namespace Service.Models
     [DataType(DataType.Password)]
     [Display(Name = "Confirm Password")]
     public string Confirm {get;set;}
-
-    public DateTime CreatedAt {get;set;} = DateTime.Now;
-    public DateTime UpdatedAt {get;set;} = DateTime.Now;
   }
-
-  
-
 }

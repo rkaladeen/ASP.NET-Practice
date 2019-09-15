@@ -3011,11 +3011,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Shared\\TicketPartial.cshtml",
-      "TargetPath": "Views\\Shared\\TicketPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"

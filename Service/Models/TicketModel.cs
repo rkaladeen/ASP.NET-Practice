@@ -1,19 +1,19 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Service.Models 
 {
-  public class TicketModel 
+  public class TicketModel : BaseEntityModel
   {
     [Key]
+    public int Ticket_Id {get; set;}
 
     [Required]
-    [MinLength(3)]
-    public string Name {get; set;}
+    public UserModel Reported_By {get; set;}
+
+    public UserModel Assigned_To {get; set;}
 
     [Required]
-    [MinLength(3)]
-    public string Location {get; set;}
+    public StoreModel Location {get; set;}
 
     [Required]
     [MinLength(3)]
@@ -21,11 +21,14 @@ namespace Service.Models
 
     [Required]
     [MinLength(3)]
-    [MaxLength(250)]
+    public string Status {get; set;}
+
+    [Required]
+    [StringLength(1000, ErrorMessage="{0} length must be between {2} and {1}.", MinimumLength = 10)]
     public string Description {get; set;}
 
-    public DateTime CreatedAt {get;set;}
-    public DateTime UpdatedAt {get;set;}
+    [StringLength(1000, ErrorMessage="{0} length must be between {2} and {1}.", MinimumLength = 10)]
+    public string Resolution {get; set;}
   }
 
 }

@@ -8,8 +8,6 @@ using Service.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-
-
 namespace Service.Controllers
 {
   public class TicketController : Controller

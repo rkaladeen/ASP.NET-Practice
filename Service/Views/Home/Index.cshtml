@@ -61,14 +61,26 @@
     <h4 class="text-dark">Open Tickets</h4>
       <div class="jumbotron p-2 shadow scrollbar w-100" id="style-5">
         <div class="overflow-auto">
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
-          <partial name="TicketPartial"/>
+          @{
+            foreach(TicketModel ticket in ViewBag.AllTickets)
+            {
+              <div class="card w-100 px-2 pt-2 pb-1 mb-2 shadow-sm">
+                <div class="row mx-0 mb-1 pb-1 border-bottom">
+                  <small>Store @ticket.Location | Opened By: @ticket.Name</small>
+                </div>
+                <small>WO-@ticket.Ticket_Id | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eligendi?</small>
+                <small class="text-muted">@ticket.CreatedAt</small>
+                <small class="text-muted">Baltimore, MD</small>
+                <div class="row mx-0 mt-1 pt-1 border-top">
+                  <div class="mr-auto">
+                    <button class="btn btn-link p-1" title="Edit" style="line-height: 1;"><i class="fas fa-pencil-alt text-primary"></i></button>
+                    <button class="btn btn-link p-1" title="Delete" style="line-height: 1;"><i class="far fa-trash-alt text-primary"></i></button>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm ml-auto" style="font-size: 0.75rem; line-height: 1;">Check In</button>
+                </div>
+              </div>;
+            }
+          }
         </div>
       </div>
   </div>
