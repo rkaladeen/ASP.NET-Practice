@@ -16,11 +16,8 @@ namespace Service.Models
     public StoreModel Location {get; set;}
 
     [Required]
-    [MinLength(3)]
     public string Priority {get; set;}
 
-    [Required]
-    [MinLength(3)]
     public string Status {get; set;}
 
     [Required]

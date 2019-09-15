@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-
 
 namespace Service.Models 
 {
@@ -37,7 +35,6 @@ namespace Service.Models
 
     [Required]
     public UserModel OTP {get; set;}
-
   }
 
 }

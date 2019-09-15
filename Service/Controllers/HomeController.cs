@@ -23,7 +23,7 @@ namespace Service.Controllers
       if(HttpContext.Session.GetString("UserName") != null)
       {
         ViewBag.AllTickets = dbContext.Tickets.ToList().OrderByDescending(u => u.CreatedAt);
-        ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
+        ViewBag.user_name = HttpContext.Session.GetString("UserName");
         return View("Index");
       }
       else

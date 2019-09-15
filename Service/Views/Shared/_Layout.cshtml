@@ -29,7 +29,7 @@
         </button>
         <div class="navbar-collapse collapse d-sm-inline-flex">
           @{
-            if(ViewData["user_logged_in"] != null)
+            if(ViewBag.user_name != null)
             {
               <ul class="navbar-nav flex-grow-1">
                 <li class="nav-item">
@@ -43,7 +43,7 @@
           }
           <ul class="navbar-nav">
             @{
-              if(ViewData["user_logged_in"] == null)
+              if(ViewBag.user_name == null)
               {
                 <li class="nav-item">
                   <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="LogIn">Log In</a>
@@ -52,7 +52,7 @@
               else
               {
                 <li class="nav-item">
-                  <a class="nav-link text-light">@ViewData["user_logged_in"]</a>
+                  <a class="nav-link text-light">@ViewBag.user_name</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="LogOut">Log Out</a>

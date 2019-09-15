@@ -8,27 +8,19 @@
   @model TicketModel
   <form asp-action="createTicket" asp-controller="Ticket" method="POST">
 
-    <!-- <div class="form-group">
-      <label asp-for="Name"></label>
-      <input class="form-control" type="text" asp-for="Name"/>
-      <span class="invalid-feedback d-block" asp-validation-for="Name"></span>
-    </div> -->
+    <input class="form-control" type="hidden" asp-for="Reported_By" value="@ViewBag.user_id"/>
 
     <div class="form-group">
       <label asp-for="Location">Location</label>
       <select class="form-control" type="text" asp-for="Location">
-      <span class="invalid-feedback d-block" asp-validation-for="Location"></span>
         @{
-          List<string> Store = new List<string>();
-          Store.Add("400");
-          Store.Add("882");
-          Store.Add("2797");
-          foreach(string store in Store as List<string>)
+          foreach(StoreModel store in ViewBag.AllStores as List<StoreModel>)
           {
-            <option>@store</option>
+            <option value="@store">@store.Store_Id</option>;
           }
         }
       </select>
+      <span class="invalid-feedback d-block" asp-validation-for="Location"></span>
     </div>
 
     <div class="form-group">

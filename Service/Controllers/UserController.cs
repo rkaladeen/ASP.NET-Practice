@@ -28,7 +28,7 @@ namespace Service.Controllers
     }
     public IActionResult LogOut()
     {
-      ViewData["user_logged_in"] = null;
+      ViewBag.user_name = null;
       HttpContext.Session.Clear();
       return RedirectToAction("LogIn");
     }
@@ -45,6 +45,8 @@ namespace Service.Controllers
         User.Password = Hasher.HashPassword(User, User.Password);
         dbContext.Users.Add(User);
         dbContext.SaveChanges();
+        HttpContext.Session.SetString("UserName", User.FirstName);
+        ViewBag.user_name = HttpContext.Session.GetString("UserName");
         return RedirectToAction("Index", "Home");
       }
       else
@@ -83,7 +85,8 @@ namespace Service.Controllers
         else
         {
           HttpContext.Session.SetString("UserName", userInDb.FirstName);
-          ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
+          HttpContext.Session.SetInt32("User_Id", userInDb.User_Id);
+          ViewBag.user_name = HttpContext.Session.GetString("UserName");
           return RedirectToAction("Index", "Home");
         }
       }
