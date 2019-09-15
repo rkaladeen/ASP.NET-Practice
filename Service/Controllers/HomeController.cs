@@ -18,11 +18,18 @@ namespace Service.Controllers
     {
       dbContext = context;
     } 
-    public ViewResult Index()
+    public IActionResult Index()
     {
-      List<TicketModel> AllTickets = dbContext.Tickets.ToList();
-      ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
-      return View();
+      if(HttpContext.Session.GetString("UserName") != null)
+      {
+        List<TicketModel> AllTickets = dbContext.Tickets.ToList();
+        ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
+        return View("Index");
+      }
+      else
+      {
+        return RedirectToAction("LogIn", "User");
+      }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

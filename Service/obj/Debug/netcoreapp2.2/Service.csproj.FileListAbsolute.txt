@@ -29,6 +29,6 @@ C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Service.pd
 C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Service.csproj.CopyComplete
 C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\User\NewUser.g.cshtml.cs
 C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\Ticket\NewTicket.g.cshtml.cs
-C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\User\LogIn.g.cshtml.cs
 C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\Shared\NewsPartial.g.cshtml.cs
 C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\Shared\TicketPartial.g.cshtml.cs
+C:\Users\rkala\Dropbox\c#.net\ASP.NET\Service\obj\Debug\netcoreapp2.2\Razor\Views\Shared\LogIn.g.cshtml.cs

@@ -21,8 +21,15 @@ namespace Service.Controllers
     } 
     public IActionResult NewTicket()
     {
-      ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
-      return View();
+      if(HttpContext.Session.GetString("UserName") != null)
+      {
+        ViewData["user_logged_in"] = HttpContext.Session.GetString("UserName");
+        return View();
+      }
+      else
+      {
+        return RedirectToAction("LogIn", "User");
+      }
     }
 
     public IActionResult CreateTicket(TicketModel Ticket)

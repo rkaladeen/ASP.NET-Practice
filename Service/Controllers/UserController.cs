@@ -26,6 +26,12 @@ namespace Service.Controllers
     {
       return View();
     }
+    public IActionResult LogOut()
+    {
+      ViewData["user_logged_in"] = null;
+      HttpContext.Session.Clear();
+      return RedirectToAction("LogIn");
+    }
     public IActionResult CreateUser(UserModel User)
     {
       if(ModelState.IsValid)

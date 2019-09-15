@@ -2991,6 +2991,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Shared\\LogIn.cshtml",
+      "TargetPath": "Views\\Shared\\LogIn.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -3008,11 +3013,6 @@
     {
       "FilePath": "Views\\Shared\\TicketPartial.cshtml",
       "TargetPath": "Views\\Shared\\TicketPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views\\User\\LogIn.cshtml",
-      "TargetPath": "Views\\User\\LogIn.cshtml",
       "FileKind": "mvc"
     },
     {
