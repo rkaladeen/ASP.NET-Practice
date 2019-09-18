@@ -121,24 +121,24 @@ namespace Service.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
-                    User_Id = table.Column<int>(nullable: false),
-                    News_Id = table.Column<int>(nullable: false)
+                    User_Id = table.Column<int>(nullable: true),
+                    ArticleNews_Id = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Likes", x => x.Like_Id);
                     table.ForeignKey(
-                        name: "FK_Likes_News_News_Id",
-                        column: x => x.News_Id,
+                        name: "FK_Likes_News_ArticleNews_Id",
+                        column: x => x.ArticleNews_Id,
                         principalTable: "News",
                         principalColumn: "News_Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Likes_Users_User_Id",
                         column: x => x.User_Id,
                         principalTable: "Users",
                         principalColumn: "User_Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -149,11 +149,11 @@ namespace Service.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
-                    Reported_ByUser_Id = table.Column<int>(nullable: false),
-                    Assigned_ToUser_Id = table.Column<int>(nullable: true),
-                    LocationStore_Id = table.Column<int>(nullable: false),
-                    Priority = table.Column<string>(nullable: false),
-                    Status = table.Column<string>(nullable: false),
+                    Reporter_Id = table.Column<int>(nullable: false),
+                    Assigned_User_Id = table.Column<int>(nullable: false),
+                    Location_Id = table.Column<int>(nullable: false),
+                    Priority = table.Column<string>(nullable: true),
+                    Status = table.Column<string>(nullable: true),
                     Description = table.Column<string>(maxLength: 1000, nullable: false),
                     Resolution = table.Column<string>(maxLength: 1000, nullable: true)
                 },
@@ -161,29 +161,29 @@ namespace Service.Migrations
                 {
                     table.PrimaryKey("PK_Tickets", x => x.Ticket_Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_Users_Assigned_ToUser_Id",
-                        column: x => x.Assigned_ToUser_Id,
+                        name: "FK_Tickets_Users_Assigned_User_Id",
+                        column: x => x.Assigned_User_Id,
                         principalTable: "Users",
                         principalColumn: "User_Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_Stores_LocationStore_Id",
-                        column: x => x.LocationStore_Id,
+                        name: "FK_Tickets_Stores_Location_Id",
+                        column: x => x.Location_Id,
                         principalTable: "Stores",
                         principalColumn: "Store_Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_Users_Reported_ByUser_Id",
-                        column: x => x.Reported_ByUser_Id,
+                        name: "FK_Tickets_Users_Reporter_Id",
+                        column: x => x.Reporter_Id,
                         principalTable: "Users",
                         principalColumn: "User_Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Likes_News_Id",
+                name: "IX_Likes_ArticleNews_Id",
                 table: "Likes",
-                column: "News_Id");
+                column: "ArticleNews_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Likes_User_Id",
@@ -216,19 +216,19 @@ namespace Service.Migrations
                 column: "SupervisorUser_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_Assigned_ToUser_Id",
+                name: "IX_Tickets_Assigned_User_Id",
                 table: "Tickets",
-                column: "Assigned_ToUser_Id");
+                column: "Assigned_User_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_LocationStore_Id",
+                name: "IX_Tickets_Location_Id",
                 table: "Tickets",
-                column: "LocationStore_Id");
+                column: "Location_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_Reported_ByUser_Id",
+                name: "IX_Tickets_Reporter_Id",
                 table: "Tickets",
-                column: "Reported_ByUser_Id");
+                column: "Reporter_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -8,17 +8,14 @@
   @model TicketModel
   <form asp-action="createTicket" asp-controller="Ticket" method="POST">
 
-    <input class="form-control" type="hidden" asp-for="Reported_By" value="@ViewBag.user_id"/>
+    <input class="form-control" type="hidden" asp-for="Reporter_Id" value="@ViewBag.user_id"/>
+    <input class="form-control" type="hidden" asp-for="Assigned_User_Id" value="@ViewBag.user_id"/>
+    <input class="form-control" type="hidden" asp-for="Status" value="Not Acknowledged"/>
 
     <div class="form-group">
       <label asp-for="Location">Location</label>
-      <select class="form-control" type="text" asp-for="Location">
-        @{
-          foreach(StoreModel store in ViewBag.AllStores as List<StoreModel>)
-          {
-            <option value="@store">@store.Store_Id</option>;
-          }
-        }
+      <select class="form-control" type="text" asp-for="Location_Id" asp-items="@(new SelectList(ViewBag.AllStores,"Store_Id","Name"))">
+        <option>Please select one</option>
       </select>
       <span class="invalid-feedback d-block" asp-validation-for="Location"></span>
     </div>

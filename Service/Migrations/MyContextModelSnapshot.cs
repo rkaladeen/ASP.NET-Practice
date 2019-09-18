@@ -22,17 +22,17 @@ namespace Service.Migrations
                     b.Property<int>("Like_Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<int?>("ArticleNews_Id");
 
-                    b.Property<int>("News_Id");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int>("User_Id");
+                    b.Property<int?>("User_Id");
 
                     b.HasKey("Like_Id");
 
-                    b.HasIndex("News_Id");
+                    b.HasIndex("ArticleNews_Id");
 
                     b.HasIndex("User_Id");
 
@@ -140,7 +140,7 @@ namespace Service.Migrations
                     b.Property<int>("Ticket_Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("Assigned_ToUser_Id");
+                    b.Property<int>("Assigned_User_Id");
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -148,28 +148,26 @@ namespace Service.Migrations
                         .IsRequired()
                         .HasMaxLength(1000);
 
-                    b.Property<int>("LocationStore_Id");
+                    b.Property<int>("Location_Id");
 
-                    b.Property<string>("Priority")
-                        .IsRequired();
+                    b.Property<string>("Priority");
 
-                    b.Property<int>("Reported_ByUser_Id");
+                    b.Property<int>("Reporter_Id");
 
                     b.Property<string>("Resolution")
                         .HasMaxLength(1000);
 
-                    b.Property<string>("Status")
-                        .IsRequired();
+                    b.Property<string>("Status");
 
                     b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Ticket_Id");
 
-                    b.HasIndex("Assigned_ToUser_Id");
+                    b.HasIndex("Assigned_User_Id");
 
-                    b.HasIndex("LocationStore_Id");
+                    b.HasIndex("Location_Id");
 
-                    b.HasIndex("Reported_ByUser_Id");
+                    b.HasIndex("Reporter_Id");
 
                     b.ToTable("Tickets");
                 });
@@ -206,13 +204,11 @@ namespace Service.Migrations
                 {
                     b.HasOne("Service.Models.NewsModel", "Article")
                         .WithMany("Liked_By")
-                        .HasForeignKey("News_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ArticleNews_Id");
 
                     b.HasOne("Service.Models.UserModel", "User")
                         .WithMany()
-                        .HasForeignKey("User_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("User_Id");
                 });
 
             modelBuilder.Entity("Service.Models.NewsModel", b =>
@@ -250,16 +246,17 @@ namespace Service.Migrations
                 {
                     b.HasOne("Service.Models.UserModel", "Assigned_To")
                         .WithMany()
-                        .HasForeignKey("Assigned_ToUser_Id");
+                        .HasForeignKey("Assigned_User_Id")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Service.Models.StoreModel", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationStore_Id")
+                        .HasForeignKey("Location_Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Service.Models.UserModel", "Reported_By")
                         .WithMany()
-                        .HasForeignKey("Reported_ByUser_Id")
+                        .HasForeignKey("Reporter_Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -66,11 +66,11 @@
             {
               <div class="card w-100 px-2 pt-2 pb-1 mb-2 shadow-sm">
                 <div class="row mx-0 mb-1 pb-1 border-bottom">
-                  <small>Store @ticket.Location | Opened By: @ticket.Reported_By</small>
+                  <small>Store - @ticket.Location.Store_Id [@ticket.Location.Name] | Opened By: @ticket.Reported_By.FirstName | Priority: @ticket.Priority | Status: @ticket.Status </small>
                 </div>
-                <small>WO-@ticket.Ticket_Id | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eligendi?</small>
-                <small class="text-muted">@ticket.CreatedAt</small>
-                <small class="text-muted">Baltimore, MD</small>
+                <small>WO-@ticket.Ticket_Id | @ticket.Description</small>
+                <small class="text-muted">Opened: @ticket.TimeDiffCreate() | Updated: @ticket.TimeDiffUpdate()</small>
+                <small class="text-muted">@ticket.Location.City | @ticket.Location.State</small>
                 <div class="row mx-0 mt-1 pt-1 border-top">
                   <div class="mr-auto">
                     <button class="btn btn-link p-1" title="Edit" style="line-height: 1;"><i class="fas fa-pencil-alt text-primary"></i></button>

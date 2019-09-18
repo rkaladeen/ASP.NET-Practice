@@ -42,6 +42,9 @@ namespace Service.Controllers
       }
       else
       {
+        ViewBag.AllStores = dbContext.Stores.ToList();
+        ViewBag.user_id = HttpContext.Session.GetInt32("User_Id");
+        ViewBag.user_name = HttpContext.Session.GetString("UserName");
         return View("NewTicket");
       }
     }

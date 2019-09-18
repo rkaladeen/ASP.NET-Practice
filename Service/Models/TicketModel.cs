@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Service.Models 
 {
@@ -7,15 +8,21 @@ namespace Service.Models
     [Key]
     public int Ticket_Id {get; set;}
 
-    [Required]
-    public UserModel Reported_By {get; set;}
+    [Display(Name = "Reported By")] 
+    public int Reporter_Id {get; set;}
+    [ForeignKey("Reporter_Id")]
+    public virtual UserModel Reported_By {get; set;}
 
-    public UserModel Assigned_To {get; set;}
+    [Display(Name = "Assigned To")] 
+    public int Assigned_User_Id {get; set;}
+    [ForeignKey("Assigned_User_Id")]
+    public virtual UserModel Assigned_To {get; set;}
 
-    [Required]
-    public StoreModel Location {get; set;}
+    [Display(Name = "Store")] 
+    public int Location_Id {get; set;}
+    [ForeignKey("Location_Id")]
+    public virtual StoreModel Location {get; set;}
 
-    [Required]
     public string Priority {get; set;}
 
     public string Status {get; set;}

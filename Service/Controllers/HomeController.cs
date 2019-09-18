@@ -22,7 +22,7 @@ namespace Service.Controllers
     {
       if(HttpContext.Session.GetString("UserName") != null)
       {
-        ViewBag.AllTickets = dbContext.Tickets.ToList().OrderByDescending(u => u.CreatedAt);
+        ViewBag.AllTickets = dbContext.Tickets.Include(u1 => u1.Reported_By).Include(u2 => u2.Assigned_To).Include(s => s.Location).ToList().OrderByDescending(u => u.CreatedAt);
         ViewBag.user_name = HttpContext.Session.GetString("UserName");
         return View("Index");
       }
